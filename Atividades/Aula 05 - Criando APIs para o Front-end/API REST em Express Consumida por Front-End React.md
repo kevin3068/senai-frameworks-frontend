@@ -590,3 +590,118 @@ export default App;
 *API RESTful no Render mostrando que está funcionando após acessar o seu link.*
 
 ---
+
+## 📬 Documentação da API no Postman
+
+A coleção do Postman documenta as cinco rotas da API, cobrindo as quatro operações CRUD. A leitura é dividida em duas rotas: a listagem de todas as notas (`GET /api/notes`) e a busca de uma nota pelo ID (`GET /api/notes/:id`).
+
+**Link da coleção:** [Coleção Postman da API de Notas](https://documenter.getpostman.com/view/58261344/2sBYPv4Yen)
+
+### Variável de ambiente
+
+Crie no Postman uma variável chamada `base_url` com o valor `https://express-api-backend.onrender.com` para acessar o deploy no Render, ou `http://localhost:3000` para testes locais. Assim, todas as requisições usam `{{base_url}}/api/notes`, e basta trocar o valor da variável para alternar entre ambientes.
+
+> **Observação:** no plano gratuito do Render, a API pode entrar em modo de espera após um período sem uso. Por isso, a primeira requisição pode demorar alguns segundos.
+
+### Resumo dos endpoints
+
+| Método | Rota | Descrição | Corpo da requisição | Códigos de resposta |
+|--------|------|-----------|---------------------|---------------------|
+| GET | /api/notes | Lista todas as notas cadastradas | Não possui | 200 (lista de notas) |
+| GET | /api/notes/:id | Retorna uma nota específica pelo ID | Não possui | 200 (nota encontrada) e 404 (nota não encontrada) |
+| POST | /api/notes | Cria uma nova nota com título e texto | Obrigatório: `titulo` e `texto` | 201 (nota criada), 400 (campos inválidos ou ausentes) |
+| PUT | /api/notes/:id | Atualiza o título e o texto de uma nota existente | Obrigatório: `titulo` e `texto` | 200 (nota atualizada), 400 (campos inválidos ou ausentes) e 404 (nota não encontrada) |
+| DELETE | /api/notes/:id | Remove uma nota existente | Não possui | 204 (nota excluída, sem corpo na resposta) e 404 (nota não encontrada) |
+
+### GET /api/notes
+
+Lista todas as notas armazenadas no arquivo `data.json`. Se não houver notas, a resposta é um array vazio.
+
+- **200 OK:** retorna um array de notas.
+
+Exemplo de resposta:
+
+```json
+[
+  {
+    "id": "1732450000000",
+    "titulo": "Comprar pão",
+    "texto": "Ir na padaria",
+    "criadoEm": "2026-11-24T12:00:00.000Z"
+  }
+]
+```
+
+### GET /api/notes/:id
+
+Retorna a nota cujo `id` corresponde ao parâmetro informado na URL.
+
+- **200 OK:** retorna o objeto da nota encontrada.
+- **404 Not Found:** nenhuma nota possui o ID informado.
+
+Exemplo de erro:
+
+```json
+{
+  "erro": "Nota não encontrada"
+}
+```
+
+### POST /api/notes
+
+Cria uma nova nota. O `id` e a data de criação (`criadoEm`) são gerados pelo servidor, e o cliente só envia `titulo` e `texto`.
+
+Exemplo de corpo da requisição (`Body > raw > JSON`):
+
+```json
+{
+  "titulo": "Comprar pão",
+  "texto": "Ir na padaria"
+}
+```
+
+- **201 Created:** nota criada com sucesso. A resposta contém o objeto completo, com `id` e `criadoEm`.
+- **400 Bad Request:** `titulo` ou `texto` estão ausentes, não são textos ou estão vazios.
+
+Exemplo de resposta (201):
+
+```json
+{
+  "id": "1732450000000",
+  "titulo": "Comprar pão",
+  "texto": "Ir na padaria",
+  "criadoEm": "2026-11-24T12:00:00.000Z"
+}
+```
+
+Exemplo de erro (400):
+
+```json
+{
+  "erro": "Os campos titulo e texto são obrigatórios"
+}
+```
+
+### PUT /api/notes/:id
+
+Atualiza `titulo` e `texto` de uma nota existente. O `id` e a data de criação são mantidos.
+
+Exemplo de corpo da requisição:
+
+```json
+{
+  "titulo": "Comprar pão e leite",
+  "texto": "Ir na padaria e no mercado"
+}
+```
+
+- **200 OK:** nota atualizada. A resposta contém o objeto atualizado.
+- **400 Bad Request:** `titulo` ou `texto` estão ausentes ou vazios.
+- **404 Not Found:** nenhuma nota possui o ID informado.
+
+### DELETE /api/notes/:id
+
+Remove a nota com o ID informado. Não é necessário enviar corpo na requisição.
+
+- **204 No Content:** nota excluída. A resposta não tem corpo, então o Postman exibe a aba de resposta vazia.
+- **404 Not Found:** nenhuma nota possui o ID informado.
