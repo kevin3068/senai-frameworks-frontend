@@ -1,4 +1,3 @@
-~~~markdown
 # Projetos Web com React, Vue, Angular e Next.js
 
 ## Descrição da Atividade
@@ -97,4 +96,3 @@ Os projetos React e Next.js foram desenvolvidos por outros integrantes do grupo 
 A atividade possibilitou o desenvolvimento de aplicações com quatro tecnologias diferentes, permitindo comparar suas estruturas, ferramentas e formas de utilização.
 
 Também foi possível praticar o versionamento com Git, a publicação de projetos no GitHub e o deploy de aplicações na Vercel. Essa experiência contribuiu para compreender as principais diferenças entre React, Vue, Angular e Next.js, além de reforçar a importância do trabalho em equipe e do controle de versões durante o desenvolvimento.
-~~~
