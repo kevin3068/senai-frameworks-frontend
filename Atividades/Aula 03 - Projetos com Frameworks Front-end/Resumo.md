@@ -1,4 +1,3 @@
-~~~markdown
 # Resumo da Aula: Frameworks Front-end
 
 ## Introdução aos Frameworks Front-end
@@ -215,4 +214,3 @@ A aula apresentou os principais conceitos relacionados aos frameworks front-end 
 Também foram estudadas as características do React, Vue, Angular e Next.js, além da criação e organização de projetos, do versionamento com Git e da publicação das aplicações.
 
 A atividade prática permitiu comparar diferentes tecnologias na construção de aplicações Web e desenvolver habilidades relacionadas ao trabalho em equipe, ao controle de versões e à publicação de projetos online.
-~~~
