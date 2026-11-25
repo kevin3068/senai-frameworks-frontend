@@ -10,10 +10,13 @@ Página de exemplo com 20 cards responsivos, construída com **Tailwind CSS**. O
 ## Estrutura do projeto
 
 ```
-projeto-2/
+Atividade 02 - HTML e Tailwind/
+├── assets/
+│   └── print-aplicacao.png
 ├── index.html
-├── style.css
-└── package.json
+├── package-lock.json
+├── package.json
+└── style.css
 ```
 
 ## Como executar
@@ -234,11 +237,11 @@ projeto-2/
 
 ### Aplicação em funcionamento
 
-![Print da aplicação](./print-aplicacao.png)
+![Print da aplicação](./assets/print-aplicacao.png)
 
 ## Link do projeto
 
-[Acessar a pasta do projeto](https://github.com/SEU_USUARIO/SEU_REPOSITORIO/tree/main/projeto-2)
+[Acessar a pasta do projeto](https://github.com/kevin3068/senai-frameworks-frontend/tree/main/Atividades/Aula%2007%20-%20Frameworks%20CSS/Atividade%2002%20-%20HTML%20e%20Tailwind)
 
 ## Classes utilizadas
 
